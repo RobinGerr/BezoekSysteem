@@ -3,6 +3,8 @@ import BezoekRij from "../components/BezoekRij";
 
 const HomePage = () => {
     const [bezoeken, setBezoeken] = useState([]);
+    const [filterdBezoeken, setFilterdBezoeken] = useState([]);
+    const [filterdDatum, setFilterdDatum] = useState(new Date().toISOString().split('T'[0])[0]);
 
     useEffect(() => {
         const fetchBezoeken = async() => {
@@ -16,6 +18,10 @@ const HomePage = () => {
         };
         fetchBezoeken();
     }, []);
+
+    useEffect(() => {
+        setFilterdBezoeken(bezoeken.filter(bezoek => bezoek.datum === filterdDatum))
+    }, [bezoeken]);
 
     return (
       <>
@@ -39,7 +45,7 @@ const HomePage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {bezoeken.map(bezoek => (
+                        {filterdBezoeken.map(bezoek => (
                             <BezoekRij bezoek={bezoek} key={bezoek.id} />
                         ))}
                     </tbody>

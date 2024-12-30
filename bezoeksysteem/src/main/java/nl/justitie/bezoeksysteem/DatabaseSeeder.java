@@ -221,6 +221,21 @@ public class DatabaseSeeder {
             bezoek15.setBezoeker(bezoeker3);
             bezoek15.setGedetineerde(gedetineerde2);
             bezoekRepository.save(bezoek15);
+
+            Bezoek bezoek16 = new Bezoek(LocalDate.now(), LocalTime.parse("10:00:00"));
+            bezoek16.setBezoeker(bezoeker3);
+            bezoek16.setGedetineerde(gedetineerde2);
+            bezoekRepository.save(bezoek16);
+
+            Bezoek bezoek17 = new Bezoek(LocalDate.now(), LocalTime.parse("10:00:00"));
+            bezoek17.setBezoeker(bezoeker1);
+            bezoek17.setGedetineerde(gedetineerde1);
+            bezoekRepository.save(bezoek17);
+
+            Bezoek bezoek18 = new Bezoek(LocalDate.now(), LocalTime.parse("10:00:00"));
+            bezoek18.setBezoeker(bezoeker2);
+            bezoek18.setGedetineerde(gedetineerde3);
+            bezoekRepository.save(bezoek18);
         }
     }
 }
