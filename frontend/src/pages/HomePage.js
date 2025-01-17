@@ -1,10 +1,12 @@
 import {useEffect, useState} from "react";
 import BezoekRij from "../components/BezoekRij";
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
     const [bezoeken, setBezoeken] = useState([]);
     const [filterdBezoeken, setFilterdBezoeken] = useState([]);
     const [filterdDatum, setFilterdDatum] = useState(new Date().toISOString().split('T'[0])[0]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBezoeken = async() => {
@@ -27,7 +29,7 @@ const HomePage = () => {
       <>
         <div className="d-flex p-4 justify-content-between">
             <h1>Bezoeksysteem</h1>
-            <button className="btn btn-primary">Plan bezoek</button>
+            <button className="btn btn-primary" onClick={() => navigate("/planbezoek")}>Plan bezoek</button>
         </div>
         <div>
             <div className="d-flex p-4 justify-content-between">
