@@ -5,9 +5,11 @@ import nl.justitie.bezoeksysteem.repository.GedetineerdeRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/gedetineerde")
+@CrossOrigin(origins = "http://localhost:3000", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH, RequestMethod.DELETE, RequestMethod.OPTIONS})
 public class GedetineerdeController {
     GedetineerdeRepository gedetineerdeRepository;
 
@@ -20,8 +22,15 @@ public class GedetineerdeController {
         return gedetineerdeRepository.findAllByAfdeling(afdeling);
     }
 
-    @GetMapping("/{achterNaam}")
+    @GetMapping("/one/{achterNaam}")
     public List<Gedetineerde> getGedetineerdeByAchterNaam(@PathVariable String achterNaam) {
         return gedetineerdeRepository.findByAchterNaam(achterNaam);
     }
+
+    @GetMapping("/find/{registratieNummer}")
+    public Optional<Gedetineerde> getGedetineerdeByRegistratieNummer(@PathVariable String registratieNummer) {
+        long registratieNummerLong = Long.parseLong(registratieNummer);
+        return gedetineerdeRepository.findByRegistratieNummer(registratieNummerLong);
+    }
+
 }

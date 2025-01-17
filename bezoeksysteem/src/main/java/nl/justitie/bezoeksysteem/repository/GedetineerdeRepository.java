@@ -12,6 +12,4 @@ public interface GedetineerdeRepository extends JpaRepository<Gedetineerde, Long
     List<Gedetineerde> findByAchterNaam(String achterNaam);
     Optional<Gedetineerde> findByRegistratieNummer(long registratieNummer);
     List<Gedetineerde> findAllByAfdeling(String afdeling);
-
-    String afdeling(String afdeling);
 }
