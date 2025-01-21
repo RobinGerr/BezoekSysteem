@@ -2,13 +2,15 @@ package nl.justitie.bezoeksysteem.controller;
 
 import nl.justitie.bezoeksysteem.model.Bezoek;
 import nl.justitie.bezoeksysteem.model.Bezoeker;
+import nl.justitie.bezoeksysteem.model.Gedetineerde;
 import nl.justitie.bezoeksysteem.repository.BezoekRepository;
+import nl.justitie.bezoeksysteem.repository.BezoekerRepository;
+import nl.justitie.bezoeksysteem.repository.GedetineerdeRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,9 +19,13 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH, RequestMethod.DELETE} )
 public class BezoekController {
     BezoekRepository bezoekRepository;
+    GedetineerdeRepository gedetineerdeRepository;
+    BezoekerRepository bezoekerRepository;
 
-    public BezoekController(BezoekRepository bezoekRepository) {
+    public BezoekController(BezoekRepository bezoekRepository, GedetineerdeRepository gedetineerdeRepository, BezoekerRepository bezoekerRepository) {
         this.bezoekRepository = bezoekRepository;
+        this.gedetineerdeRepository = gedetineerdeRepository;
+        this.bezoekerRepository = bezoekerRepository;
     }
 
     @GetMapping
@@ -32,8 +38,18 @@ public class BezoekController {
         return bezoekRepository.findById(id);
     }
 
-    @PostMapping
-    public Bezoek createBezoek(@RequestBody Bezoek bezoek) {
+    @PostMapping("/{gedetineerdeId}/{bezoekerId}")
+    public Bezoek createBezoek(@RequestBody Bezoek bezoek, @PathVariable String gedetineerdeId, @PathVariable String bezoekerId) {
+        long gedetineerdeIdLong = Long.parseLong(gedetineerdeId);
+        long bezoekerIdLong = Long.parseLong(bezoekerId);
+        Optional<Gedetineerde> gedetineerde = gedetineerdeRepository.findByRegistratieNummer(gedetineerdeIdLong);
+        Optional<Bezoeker> bezoeker = bezoekerRepository.findById(bezoekerIdLong);
+
+        if (gedetineerde.isPresent() && bezoeker.isPresent()) {
+            bezoek.setGedetineerde(gedetineerde.get());
+            bezoek.setBezoeker(bezoeker.get());
+        }
+
         return bezoekRepository.save(bezoek);
     }
 

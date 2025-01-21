@@ -25,14 +25,19 @@ public class BezoekerController {
         return bezoekerRepository.findByAchterNaam(achterNaam);
     }
 
+    @GetMapping("/last/{achterNaam}")
+    public Optional<Bezoeker> getLastBezoekerByAchterNaam(@PathVariable String achterNaam) {
+        return bezoekerRepository.findLastByAchterNaam(achterNaam);
+    }
+
     @GetMapping("/{id}")
     public Optional<Bezoeker> getBezoekerById(@PathVariable long id) {
         return bezoekerRepository.findById(id);
     }
 
     @PostMapping
-    public Bezoeker createBezoeker(@RequestBody Bezoeker bezoeker) {
-        return bezoekerRepository.save(bezoeker);
+    public void createBezoeker(@RequestBody Bezoeker bezoeker) {
+        bezoekerRepository.save(bezoeker);
     }
 
     @PatchMapping("/{id}")
