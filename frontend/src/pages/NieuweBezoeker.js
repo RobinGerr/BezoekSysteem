@@ -80,7 +80,7 @@ const NieuweBezoeker = () => {
                         <h1>Registreer bezoek voor: {gedetineerde.voorNaam} {gedetineerde.achterNaam}</h1>
                         <h3>Plan bezoek</h3>
                     </div>
-
+    
                     <div className="card p-4 mb-4">
                         <h4>Registreer Bezoeker</h4>
                         <form>
