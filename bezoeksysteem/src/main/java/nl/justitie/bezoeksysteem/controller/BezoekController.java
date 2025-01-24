@@ -34,8 +34,9 @@ public class BezoekController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Bezoek> getBezoekById(@PathVariable long id) {
-        return bezoekRepository.findById(id);
+    public Optional<Bezoek> getBezoekById(@PathVariable String id) {
+        long idLong = Long.parseLong(id);
+        return bezoekRepository.findById(idLong);
     }
 
     @PostMapping("/{gedetineerdeId}/{bezoekerId}")

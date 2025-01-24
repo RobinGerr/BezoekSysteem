@@ -30,7 +30,7 @@ public class BezoekerController {
         return bezoekerRepository.findLastByAchterNaam(achterNaam);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Optional<Bezoeker> getBezoekerById(@PathVariable long id) {
         return bezoekerRepository.findById(id);
     }
