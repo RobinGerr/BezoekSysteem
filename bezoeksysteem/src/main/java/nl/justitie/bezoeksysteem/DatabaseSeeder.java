@@ -140,11 +140,11 @@ public class DatabaseSeeder {
             Bezoeker bezoeker20 = new Bezoeker("Kim", "Scholten", LocalDate.of(1996, 6, 3), "Enschede");
             bezoekerRepository.save(bezoeker20);
 
-            createBezoeken(gedetineerde1, gedetineerde2, gedetineerde3, bezoeker1, bezoeker2, bezoeker3);
+            createBezoeken(gedetineerde1, gedetineerde2, gedetineerde3, gedetineerde4, gedetineerde5, gedetineerde6, gedetineerde7, bezoeker1, bezoeker2, bezoeker3, bezoeker4, bezoeker5, bezoeker6, bezoeker7);
         }
     }
 
-    public void createBezoeken(Gedetineerde gedetineerde1, Gedetineerde gedetineerde2, Gedetineerde gedetineerde3, Bezoeker bezoeker1, Bezoeker bezoeker2, Bezoeker bezoeker3) {
+    public void createBezoeken(Gedetineerde gedetineerde1, Gedetineerde gedetineerde2, Gedetineerde gedetineerde3, Gedetineerde gedetineerde4, Gedetineerde gedetineerde5, Gedetineerde gedetineerde6, Gedetineerde gedetineerde7, Bezoeker bezoeker1, Bezoeker bezoeker2, Bezoeker bezoeker3, Bezoeker bezoeker4, Bezoeker bezoeker5, Bezoeker bezoeker6, Bezoeker bezoeker7) {
         if (bezoekRepository.count() == 0) {
             // Bezoeken
             Bezoek bezoek1 = new Bezoek(LocalDate.of(2025, 2, 1), LocalTime.parse("10:30:00"));
@@ -163,38 +163,38 @@ public class DatabaseSeeder {
             bezoekRepository.save(bezoek3);
 
             Bezoek bezoek4 = new Bezoek(LocalDate.now(), LocalTime.parse("13:00:00"));
-            bezoek4.setBezoeker(bezoeker1);
-            bezoek4.setGedetineerde(gedetineerde2);
+            bezoek4.setBezoeker(bezoeker4);
+            bezoek4.setGedetineerde(gedetineerde4);
             bezoekRepository.save(bezoek4);
 
             Bezoek bezoek5 = new Bezoek(LocalDate.now(), LocalTime.parse("10:45:00"));
-            bezoek5.setBezoeker(bezoeker2);
-            bezoek5.setGedetineerde(gedetineerde3);
+            bezoek5.setBezoeker(bezoeker5);
+            bezoek5.setGedetineerde(gedetineerde5);
             bezoekRepository.save(bezoek5);
 
             Bezoek bezoek6 = new Bezoek(LocalDate.now(), LocalTime.parse("13:15:00"));
-            bezoek6.setBezoeker(bezoeker3);
-            bezoek6.setGedetineerde(gedetineerde1);
+            bezoek6.setBezoeker(bezoeker6);
+            bezoek6.setGedetineerde(gedetineerde6);
             bezoekRepository.save(bezoek6);
 
             Bezoek bezoek7 = new Bezoek(LocalDate.now(), LocalTime.parse("12:30:00"));
-            bezoek7.setBezoeker(bezoeker1);
-            bezoek7.setGedetineerde(gedetineerde3);
+            bezoek7.setBezoeker(bezoeker7);
+            bezoek7.setGedetineerde(gedetineerde7);
             bezoekRepository.save(bezoek7);
 
             Bezoek bezoek8 = new Bezoek(LocalDate.now(), LocalTime.parse("15:30:00"));
-            bezoek8.setBezoeker(bezoeker2);
-            bezoek8.setGedetineerde(gedetineerde1);
+            bezoek8.setBezoeker(bezoeker6);
+            bezoek8.setGedetineerde(gedetineerde4);
             bezoekRepository.save(bezoek8);
 
             Bezoek bezoek9 = new Bezoek(LocalDate.now(), LocalTime.parse("10:15:00"));
             bezoek9.setBezoeker(bezoeker3);
-            bezoek9.setGedetineerde(gedetineerde2);
+            bezoek9.setGedetineerde(gedetineerde6);
             bezoekRepository.save(bezoek9);
 
             Bezoek bezoek10 = new Bezoek(LocalDate.now(), LocalTime.parse("14:30:00"));
             bezoek10.setBezoeker(bezoeker1);
-            bezoek10.setGedetineerde(gedetineerde2);
+            bezoek10.setGedetineerde(gedetineerde3);
             bezoekRepository.save(bezoek10);
 
             Bezoek bezoek11 = new Bezoek(LocalDate.now(), LocalTime.parse("11:45:00"));
@@ -219,12 +219,12 @@ public class DatabaseSeeder {
 
             Bezoek bezoek15 = new Bezoek(LocalDate.now(), LocalTime.parse("10:00:00"));
             bezoek15.setBezoeker(bezoeker3);
-            bezoek15.setGedetineerde(gedetineerde2);
+            bezoek15.setGedetineerde(gedetineerde1);
             bezoekRepository.save(bezoek15);
 
             Bezoek bezoek16 = new Bezoek(LocalDate.now(), LocalTime.parse("10:00:00"));
             bezoek16.setBezoeker(bezoeker3);
-            bezoek16.setGedetineerde(gedetineerde2);
+            bezoek16.setGedetineerde(gedetineerde7);
             bezoekRepository.save(bezoek16);
 
             Bezoek bezoek17 = new Bezoek(LocalDate.now(), LocalTime.parse("10:00:00"));
@@ -236,6 +236,21 @@ public class DatabaseSeeder {
             bezoek18.setBezoeker(bezoeker2);
             bezoek18.setGedetineerde(gedetineerde3);
             bezoekRepository.save(bezoek18);
+
+            Bezoek bezoek19 = new Bezoek(LocalDate.of(2025, 2, 1), LocalTime.parse("10:30:00"));
+            bezoek1.setBezoeker(bezoeker4);
+            bezoek1.setGedetineerde(gedetineerde7);
+            bezoekRepository.save(bezoek19);
+
+            Bezoek bezoek20 = new Bezoek(LocalDate.of(2025, 2, 1), LocalTime.parse("10:30:00"));
+            bezoek1.setBezoeker(bezoeker2);
+            bezoek1.setGedetineerde(gedetineerde5);
+            bezoekRepository.save(bezoek20);
+
+            Bezoek bezoek21 = new Bezoek(LocalDate.of(2025, 2, 1), LocalTime.parse("10:30:00"));
+            bezoek1.setBezoeker(bezoeker1);
+            bezoek1.setGedetineerde(gedetineerde6);
+            bezoekRepository.save(bezoek21);
         }
     }
 }
