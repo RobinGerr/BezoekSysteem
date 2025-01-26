@@ -238,18 +238,18 @@ public class DatabaseSeeder {
             bezoekRepository.save(bezoek18);
 
             Bezoek bezoek19 = new Bezoek(LocalDate.of(2025, 2, 1), LocalTime.parse("10:30:00"));
-            bezoek1.setBezoeker(bezoeker4);
-            bezoek1.setGedetineerde(gedetineerde7);
+            bezoek19.setBezoeker(bezoeker4);
+            bezoek19.setGedetineerde(gedetineerde7);
             bezoekRepository.save(bezoek19);
 
             Bezoek bezoek20 = new Bezoek(LocalDate.of(2025, 2, 1), LocalTime.parse("10:30:00"));
-            bezoek1.setBezoeker(bezoeker2);
-            bezoek1.setGedetineerde(gedetineerde5);
+            bezoek20.setBezoeker(bezoeker2);
+            bezoek20.setGedetineerde(gedetineerde5);
             bezoekRepository.save(bezoek20);
 
             Bezoek bezoek21 = new Bezoek(LocalDate.of(2025, 2, 1), LocalTime.parse("10:30:00"));
-            bezoek1.setBezoeker(bezoeker1);
-            bezoek1.setGedetineerde(gedetineerde6);
+            bezoek21.setBezoeker(bezoeker1);
+            bezoek21.setGedetineerde(gedetineerde6);
             bezoekRepository.save(bezoek21);
         }
     }

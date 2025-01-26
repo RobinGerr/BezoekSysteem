@@ -29,9 +29,10 @@ public class BezoekController {
         this.bezoekerRepository = bezoekerRepository;
     }
 
-    @GetMapping
-    public List<Bezoek> getAllBezoekOfToday() {
-        return bezoekRepository.findByDatumOrderByTijdAsc(LocalDate.now());
+    @GetMapping("/filter/{datum}")
+    public List<Bezoek> getAllBezoekOfToday(@PathVariable String datum) {
+        LocalDate date = LocalDate.parse(datum);
+        return bezoekRepository.findByDatumOrderByTijdAsc(date);
     }
 
     @GetMapping("/all")
