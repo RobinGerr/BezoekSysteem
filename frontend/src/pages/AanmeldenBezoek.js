@@ -11,6 +11,7 @@ const AanmeldenBezoek = () => {
     const [bsn, setBsn] = useState("");
     const {bezoekId} = useParams();
     const navigate = useNavigate();
+    const areBsnAndStatusThere = bsn && status;
 
     useEffect(() => {
         const fetchBezoek = async () => {
@@ -22,7 +23,7 @@ const AanmeldenBezoek = () => {
             setBezoek(data);
         };
         fetchBezoek();
-        }, []);
+    }, []);
 
     useEffect(() => {
         const fetchGedetineerde = async () => {
@@ -59,6 +60,53 @@ const AanmeldenBezoek = () => {
         };
         fetchBezoeker();
     }, [bezoek]);
+
+    const handleUpdateBezoeker = async (e) => {
+        const bezoeker = {bsn};
+        if (bezoek && bezoek.bezoeker) {
+            try {
+                const response = await fetch(`http://localhost:8080/bezoeker/${bezoek.bezoeker.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(bezoeker),
+                });
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+            } catch (error) {
+                console.error("Failed to update bezoeker:", error);
+            }
+        }
+    };
+
+    const handleUpdateBezoek = async (e) => {
+        const bezoekBody = {status};
+        if (bezoek) {
+            try {
+                const response = await fetch(`http://localhost:8080/bezoek/${bezoek.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(bezoekBody),
+                });
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+                navigate('/')
+                alert("Bezoek succesvol aangemeld!");
+            } catch (error) {
+                console.error("Failed to update bezoek:", error);
+            }
+        }
+    };
+
+    const handleAanmelden = async (e) => {
+        handleUpdateBezoeker();
+        handleUpdateBezoek();
+    };
 
 
     return (
@@ -119,8 +167,8 @@ const AanmeldenBezoek = () => {
                         </form>
 
                         <div className="d-flex justify-content-end mt-4">
-                        {/*<ButtonAction label="Plan het bezoek" action={handleNieuwBezoek}*/}
-                        {/*              disabled={!isBezoekerCreated}/>*/}
+                        <ButtonAction label="Meld het bezoek aan" action={handleAanmelden}
+                            disabled={!areBsnAndStatusThere}/>
                         </div>
                     </div>
                 </div>
