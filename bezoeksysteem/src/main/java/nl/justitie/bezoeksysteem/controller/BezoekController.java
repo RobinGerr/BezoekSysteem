@@ -54,15 +54,15 @@ public class BezoekController {
         return bezoekRepository.save(bezoek);
     }
 
-    @PatchMapping
-    public void updateBezoek(@RequestBody Bezoek bezoek) {
-        long id = bezoek.getId();
-        LocalDate datum = bezoek.getDatum();
-        Optional<Bezoek> bezoekOptional = bezoekRepository.findById(id);
+    @PatchMapping("/{id}")
+    public void updateBezoek(@RequestBody Bezoek bezoek, @PathVariable String id) {
+        long idLong = Long.parseLong(id);
+        String status = bezoek.getStatus();
+        Optional<Bezoek> bezoekOptional = bezoekRepository.findById(idLong);
         if (bezoekOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-        bezoekOptional.get().setDatum(datum);
+        bezoekOptional.get().setStatus(status);
         bezoekRepository.save(bezoek);
     }
 

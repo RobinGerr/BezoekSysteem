@@ -41,10 +41,10 @@ public class BezoekerController {
     }
 
     @PatchMapping("/{id}")
-    public void updateBezoeker(@RequestBody Bezoeker bezoeker) {
-        long id = bezoeker.getId();
+    public void updateBezoeker(@RequestBody Bezoeker bezoeker, @PathVariable String id) {
+        long idLong = Long.parseLong(id);
         long bsn = bezoeker.getBsn();
-        Optional<Bezoeker> bezoekerOptional = bezoekerRepository.findById(id);
+        Optional<Bezoeker> bezoekerOptional = bezoekerRepository.findById(idLong);
         if (bezoekerOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
