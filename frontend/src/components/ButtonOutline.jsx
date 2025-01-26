@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import { useNavigate } from 'react-router-dom';
 
-const ButtonOutline = ({label, link}) => {
+const ButtonOutline = ({label, link, testId}) => {
     const navigate = useNavigate();
     return (
-        <button className="btn btn-outline-primary" onClick={() => navigate(`${link}`)}>{label}</button>
+        <button className="btn btn-outline-primary" onClick={() => navigate(`${link}`) }>{label}</button>
     );
 };
 

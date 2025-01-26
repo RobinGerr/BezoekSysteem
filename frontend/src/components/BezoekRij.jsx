@@ -15,7 +15,7 @@ const BezoekRij = ({bezoek}) => {
     };
 
         return (
-            <tr key={bezoek.id}>
+            <tr key={bezoek.id} data-testid="bezoek-row">
                 <th scope="row">{gedetineerde.voorNaam} {gedetineerde.achterNaam}</th>
                 <td>{bezoeker.voorNaam} {bezoeker.achterNaam} </td>
                 <td>{formatDate(bezoek.datum)}</td>
