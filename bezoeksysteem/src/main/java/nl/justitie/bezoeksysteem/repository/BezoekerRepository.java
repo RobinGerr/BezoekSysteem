@@ -15,4 +15,7 @@ public interface BezoekerRepository extends JpaRepository<Bezoeker,Long> {
    Optional<Bezoeker> findById(Long id);
    @Query("SELECT b FROM Bezoeker b WHERE b.achterNaam = :achterNaam ORDER BY b.id DESC")
    Optional<Bezoeker> findLastByAchterNaam(@Param("achterNaam") String achterNaam);
+   @Query("SELECT b FROM Bezoeker b ORDER BY b.id DESC")
+   Optional<Bezoeker> findLastBezoeker();
+   List<Bezoeker> findAllByAchterNaam(String achterNaam);
 }
