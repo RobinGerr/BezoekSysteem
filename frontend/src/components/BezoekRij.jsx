@@ -8,11 +8,17 @@ const BezoekRij = ({bezoek}) => {
     const check = bezoek.status === "Bezoek aanwezig";
     const block = bezoek.status === "Bezoeker geweigerd";
 
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const date = new Date(dateString);
+        return date.toLocaleDateString('nl-NL', options);
+    };
+
         return (
             <tr key={bezoek.id}>
                 <th scope="row">{gedetineerde.voorNaam} {gedetineerde.achterNaam}</th>
                 <td>{bezoeker.voorNaam} {bezoeker.achterNaam} </td>
-                <td>{bezoek.datum}</td>
+                <td>{formatDate(bezoek.datum)}</td>
                 <td>{bezoek.tijd}</td>
                 <td>
                 { check ? (
