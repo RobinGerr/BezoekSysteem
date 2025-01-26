@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +30,11 @@ public class BezoekController {
     }
 
     @GetMapping
+    public List<Bezoek> getAllBezoekOfToday() {
+        return bezoekRepository.findByDatumOrderByTijdAsc(LocalDate.now());
+    }
+
+    @GetMapping("/all")
     public List<Bezoek> getAllBezoek() {
         return bezoekRepository.findAll();
     }
